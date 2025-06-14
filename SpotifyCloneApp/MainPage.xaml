@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpotifyCloneApp.MainPage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="Tus canciones favoritas"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="{StaticResource TextColor}"
+               HorizontalOptions="Center" />
+
+        <CollectionView x:Name="SongsCollection"
+                        ItemsSource="{Binding Songs}"
+                        VerticalOptions="FillAndExpand"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" RowSpacing="0" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame WidthRequest="50" HeightRequest="50"
+                               BackgroundColor="{StaticResource PrimaryColor}"
+                               CornerRadius="10"
+                               HasShadow="False"
+                               VerticalOptions="Center">
+                            <Label Text="♪"
+                                   FontSize="24"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   TextColor="Black" />
+                        </Frame>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center">
+                            <Label Text="{Binding}"
+                                   FontSize="16"
+                                   TextColor="{StaticResource TextColor}" />
+                            <Label Text="Artista desconocido"
+                                   FontSize="12"
+                                   TextColor="{StaticResource SubtitleColor}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
